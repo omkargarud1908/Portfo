@@ -217,7 +217,7 @@ export function ContactSection() {
                 </div>
 
                 {/* Social Links */}
-                <div className="p-6 rounded-2xl bg-card border border-border">
+                {/*<div className="p-6 rounded-2xl bg-card border border-border">
                   <h3 className="text-xl font-bold mb-6">Connect with Me</h3>
                   <div className="flex gap-4">
                     {socialLinks.map((social) => (
@@ -237,6 +237,7 @@ export function ContactSection() {
                     ))}
                   </div>
                 </div>
+                */}
 
                 {/* Quick Message */}
                 <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20">
