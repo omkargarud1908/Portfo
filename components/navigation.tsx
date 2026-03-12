@@ -2,9 +2,29 @@
 
 import { useState, useEffect } from "react"
 import { useTheme } from "next-themes"
-import { Moon, Sun, Menu, X } from "lucide-react"
+import { Moon, Sun, Menu, X, Palette, Waves, Sunset, TreePine, Flower2, Stars, Snowflake, Monitor } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
+} from "@/components/ui/dropdown-menu"
 import { cn } from "@/lib/utils"
+
+const themes = [
+  { name: "system", label: "System", icon: Monitor },
+  { name: "light", label: "Light", icon: Sun },
+  { name: "dark", label: "Dark", icon: Moon },
+  { name: "ocean", label: "Ocean", icon: Waves },
+  { name: "sunset", label: "Sunset", icon: Sunset },
+  { name: "forest", label: "Forest", icon: TreePine },
+  { name: "rose", label: "Rose", icon: Flower2 },
+  { name: "midnight", label: "Midnight", icon: Stars },
+  { name: "nord", label: "Nord", icon: Snowflake },
+]
 
 const navLinks = [
   { name: "About", href: "#about" },
@@ -119,21 +139,40 @@ export function Navigation() {
 
               {/* Right Side */}
               <div className="flex items-center gap-2">
-                {/* Theme Toggle */}
+                {/* Theme Selector */}
                 {mounted && (
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                    className="rounded-lg hover:bg-white/10"
-                  >
-                    {theme === "dark" ? (
-                      <Sun className="h-5 w-5" />
-                    ) : (
-                      <Moon className="h-5 w-5" />
-                    )}
-                    <span className="sr-only">Toggle theme</span>
-                  </Button>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="rounded-lg hover:bg-white/10"
+                      >
+                        <Palette className="h-5 w-5" />
+                        <span className="sr-only">Select theme</span>
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent align="end" className="w-40">
+                      <DropdownMenuLabel className="text-xs text-muted-foreground">Select Theme</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      {themes.map((t) => {
+                        const Icon = t.icon
+                        return (
+                          <DropdownMenuItem
+                            key={t.name}
+                            onClick={() => setTheme(t.name)}
+                            className={cn(
+                              "flex items-center gap-2 cursor-pointer",
+                              theme === t.name && "bg-primary/10 text-primary"
+                            )}
+                          >
+                            <Icon className="h-4 w-4" />
+                            <span>{t.label}</span>
+                          </DropdownMenuItem>
+                        )
+                      })}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 )}
 
                 {/* Mobile Menu Button */}
@@ -157,7 +196,7 @@ export function Navigation() {
           <div
             className={cn(
               "lg:hidden overflow-hidden transition-all duration-300",
-              isMobileMenuOpen ? "max-h-[400px] opacity-100 pb-4" : "max-h-0 opacity-0"
+              isMobileMenuOpen ? "max-h-[500px] opacity-100 pb-4" : "max-h-0 opacity-0"
             )}
           >
             <div className="px-4">
@@ -178,6 +217,33 @@ export function Navigation() {
                   </a>
                 ))}
               </div>
+              
+              {/* Mobile Theme Selector */}
+              {mounted && (
+                <div className="mt-4 pt-4 border-t border-white/10">
+                  <p className="text-xs text-muted-foreground mb-2 px-1">Theme</p>
+                  <div className="grid grid-cols-3 gap-2">
+                    {themes.map((t) => {
+                      const Icon = t.icon
+                      return (
+                        <button
+                          key={t.name}
+                          onClick={() => setTheme(t.name)}
+                          className={cn(
+                            "flex flex-col items-center gap-1 px-3 py-2 text-xs font-medium rounded-xl transition-all duration-300",
+                            theme === t.name
+                              ? "bg-primary text-primary-foreground"
+                              : "text-muted-foreground hover:text-foreground bg-white/5 hover:bg-white/10"
+                          )}
+                        >
+                          <Icon className="h-4 w-4" />
+                          <span>{t.label}</span>
+                        </button>
+                      )
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </nav>
