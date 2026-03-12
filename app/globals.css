@@ -223,3 +223,9 @@
 .animate-count {
   animation: count-up 0.5s ease-out forwards;
 }
+
+/* 3D Background vignette overlay */
+.vignette-overlay {
+  background: radial-gradient(ellipse at center, transparent 0%, var(--background) 100%);
+  pointer-events: none;
+}
