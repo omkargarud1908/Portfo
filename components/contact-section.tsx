@@ -243,7 +243,7 @@ export function ContactSection() {
                 <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 border border-primary/20">
                   <p className="text-lg font-medium mb-2">Let's build something great together!</p>
                   <p className="text-muted-foreground text-sm">
-                    I'm currently open to new opportunities and collaborations. Whether you have a project idea or just want to say hi, feel free to reach out.
+                    I'm currently open to new opportunities and collaborations. Whether you have a project idea, a potential partnership, or just want to connect, feel free to reach out. I’m always excited to work on innovative projects, learn new technologies, and contribute to meaningful solutions. If you’re looking for someone who is passionate about development, problem-solving, and continuous learning, I’d love to hear from you. Let’s connect and create something impactful together.
                   </p>
                 </div>
               </div>

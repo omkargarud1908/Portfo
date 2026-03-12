@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 const experiences = [
   {
-    title: "Intern (Power Platform)",
+    title: "Software Engineer Intern (Power Platform)",
     company: "Revvity",
     location: "Mumbai, India",
     period: "Jan 2026 - Present",

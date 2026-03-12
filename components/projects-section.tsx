@@ -13,7 +13,7 @@ const projects = [
     description:
       "A comprehensive admin panel with JWT authentication, role-based access control, user & role management, audit logs, and analytics dashboard. Includes Postman collection for API testing.",
     image: "/projects/super-admin.jpg",
-    technologies: ["Node.js", "Prisma ORM", "Neon Postgres", "React", "JWT"],
+    technologies: ["Node.js", "Prisma ORM", "React", "JWT"],
     githubUrl: "https://github.com/omkargarud1908/SuperAdmin",
     liveUrl: "https://super-admin-ssgt.vercel.app/",
     featured: true,
